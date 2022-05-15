@@ -1,0 +1,87 @@
+﻿@model BookDetailViewModel
+@{
+    ViewData["Title"] = "Bookster » Viata lui Pi";
+}
+<div class="container-fluid text-right text-primary mb-2">
+	<a href="#" class="mr-3"><i class="fa fa-book"></i></a>
+	<a href="#" class="mr-3">Edit</a>
+	<a href="#">Next</a>
+</div>
+<div class="container">
+	<div class="row">
+		<div class="d-none py-4 d-md-block col-md-3">
+			<img src="~/img/books/@Model.Image.Path" alt="@Model.Image.AlternativeText" class="img-fluid shadow rounded"/>
+		</div>
+		<div class="col-md-6 py-4">
+			<div class="row ">
+				<div class="col-3 d-md-none">
+					<img src="~/img/books/@Model.Image.Path" alt="@Model.Image.AlternativeText" class="img-fluid shadow rounded"/>	
+				</div>
+				<div class="col-9 col-md-12">
+					<h2>@Model.Title</h2>
+					<div>
+					Carte de <a href="@Model.Author.Slug" class="font-weight-bold">@Model.Author.Text</a>
+					</div>
+					<div class="mt-2">
+						<span class="rating">
+							@for(int i = 0; i<10; i++)
+							{
+								<i class="fa fa-star @(Model.Rank <= i? "":"checked")"></i>
+							}
+						</span>
+						<span class="ml-md-3">@Model.Rank</span>
+					</div>
+					<div class="row mt-2">
+						<div class="col-md-4 text-truncate" title="47 recenzii">
+							<i class="fa fa-edit text-secondary mr-2"></i>
+							<a href="#">@Model.NumberOfReviews recenzii</a>
+						</div>
+						<div class="col-md-4 text-truncate" title="1227 imprumuturi">
+							<i class="fa fa-eye text-secondary mr-2"></i>
+							<span>@Model.NumberOfLoans imprumuturi</span>
+						</div>
+						<div class="col-md-4 text-truncate" title="366 pagini">
+							<i class="fa fa-file text-secondary mr-2"></i>
+							<span>@Model.NumberOfPages pagini</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="mt-4">
+				<partial name="_ShowMoreDescription" model="@Model.Description"></partial>
+			</div>
+			<div>
+				@foreach(string item in @Model.Awards) {
+					<div class="d-inline-block award">@item</div>
+				}
+			</div>
+		</div>
+		<div class="col-md-3 py-4 border-left border-right text-center">
+			<div>
+				<button class="btn btn-primary w-75 text-truncate" title="Imprumuta">Imprumuta</button>
+				<div class="my-2">
+					<a href="#"><img class="flag m-2" src="~/img/flags/ro.svg" alt="Romania flag"/></a>
+					<a href="#"><img class="flag m-2 opacity-75" src="~/img/flags/en.svg" alt="UK flag"/></a>
+				</div>
+				<div class="my-2">
+					Livrare: marti, 17 mai
+				</div>
+			</div>
+			<div class="m-3">
+				<button class="btn btn-light d-inline-block w-75 m-2 text-truncate" title="Wishlist">
+					<i class="fa fa-heart text-primary mr-2"></i>
+					Wishlist
+				</button>
+				<button class="btn btn-light d-inline-block w-75 m-2 text-truncate" title="Am citit">
+					<i class="fa fa-check text-primary mr-2"></i>Am citit
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="container-fluid bg-light text-center">
+	<partial name="_Categories" model="Model.Categories"></partial>
+</div>
+<div class="container">
+	<partial name="_RelatedItems" model="Model.RelatedItems"></partial>
+</div>

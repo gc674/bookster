@@ -1,0 +1,8 @@
+﻿@model CategoryModel
+<a href="@Model.Slug" class="btn btn-default border bg-white rounded-pill m-2">
+	@if (!string.IsNullOrWhiteSpace(Model.Logo))
+	{
+		<img src="/img/categories/@Model.Logo" alt="@Model.Title" width="30" height="30" class="rounded-circle"/>
+	}
+	@Model.Title
+</a>

@@ -1,0 +1,60 @@
+:root { 
+    --font-small: 12px;
+}
+
+.font-size-sm {
+    font-size: var(--font-small)
+}
+
+/*---Navbar---*/
+.navbar {
+    border: 0;
+    border-top: 3px solid var(--secondary);
+}
+    .navbar .nav-link {
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 1;
+    }
+
+    .navbar .nav-item {
+        border-top: 3px solid transparent;
+        border-bottom: 3px solid transparent
+    }
+
+    .navbar .nav-item:hover {
+        border-bottom: 3px solid var(--secondary)
+    }
+/*---End Navbar---*/
+/*---Rating---*/
+.rating .fa.checked {
+    color: var(--yellow)
+}
+
+.rating:hover .fa,
+.rating .fa:hover{
+    color: var(--yellow);
+}
+
+.rating .fa:hover ~ .fa {
+    color: var(--black);
+}
+/*---end Rating---*/
+
+.flag {
+    width: 30px;
+    height: 20px;
+}
+
+.award {
+    background-image: url(/img/icons/icon-award-l.svg),url(/img/icons/icon-award-r.svg);
+    background-repeat: no-repeat,no-repeat;
+    background-position: left center,right center;
+    background-size: 17px 30px;
+    padding: 14px 20px;
+    float: left;
+    max-width: 170px;
+    text-align: center;
+    color: var(--red);
+    font-size: var(--font-small)
+}

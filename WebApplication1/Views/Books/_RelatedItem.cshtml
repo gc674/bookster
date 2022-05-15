@@ -1,0 +1,43 @@
+﻿@model RelatedItem
+
+<div class="col py-2">
+	<div class="card border-0 h-100">
+		<div class="card-body p-0 bg-primary rounded">
+
+			<div class="card border-0 shadow text-white h-100 bg-primary">
+				@if (Model.Image != null)
+				{
+					<a href="@Model.Slug">
+						<img src="/img/books/160x240/@Model.Image.Path" alt="@Model.Image.AlternativeText" class="card-img " />
+					</a>
+				}
+				@if (Model.GetType() == typeof(ArticleSummary))
+				{
+					@if ((Model as ArticleSummary).IsVideo)
+					{
+						<div class="position-absolute w-100 h-100 text-center d-flex justify-content-center align-content-center flex-column">
+							<i class="fa fa-play-circle fa-2x text-white-50"></i>
+						</div>
+					}
+					<div class="card-img-overlay d-flex flex-column justify-content-between p-0 h-100">
+						<span class="card-title p-2">@((Model as ArticleSummary).ImageText)</span>
+						<p class="card-text text-truncated font-size-sm border-top px-2 py-1">Articol online</p>
+					</div>
+				}
+				@if (Model.GetType() == typeof(BookSummary) && (Model as BookSummary).IsEbook)
+				{
+					<div class="position-absolute w-100 h-100 text-center d-flex justify-content-end align-content-bottom flex-column">
+						<img src="/img/icons/overlay-ebook.svg" height="30" />
+					</div>
+				}
+			</div>
+		</div>
+		<div class="card-footer border-0 bg-white px-0" style="height:50px">
+			@if (!string.IsNullOrEmpty(Model.Title))
+			{
+				<div class="font-weight-bold text-truncate font-size-sm" title="@Model.Title">@Model.Title</div>
+			}
+			<a href="@Model.Author.Slug" class="card-text text-truncate font-size-sm" title="@Model.Author.Text">@Model.Author.Text</a>
+		</div>
+	</div>
+</div>

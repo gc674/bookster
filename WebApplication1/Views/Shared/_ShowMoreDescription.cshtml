@@ -1,0 +1,15 @@
+﻿@model string
+@{
+	int numberOfCharacters = 300;
+}
+<p>
+	@Model.Substring(0, numberOfCharacters)<span>...</span><span class="d-none">@Model.Substring(numberOfCharacters)</span>
+	<a href="javascript:void(0);" class="text-primary" onclick="toggleText(this)">Mai mult <i class="fa fa-angle-double-right"></i></a>
+	<a href="javascript:void(0);" class="text-primary d-none" onclick="toggleText(this)">Mai putin <i class="fa fa-angle-double-left"></i></a>
+</p>
+<script>
+        function toggleText(e) {
+            let items = e.parentElement.querySelectorAll('span,a');
+			for(var i = 0; i < items.length; i++) { items[i].classList.toggle("d-none")}
+        }
+    </script>
